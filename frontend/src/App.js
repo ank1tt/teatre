@@ -1,16 +1,27 @@
 import { BrowserRouter as Router, Routes, Route , Navigate} from 'react-router-dom';
 import './App.css';
-import LogIn from './components/LogIn';
-import Register from './components/Register';
+// import LogIn from './components/LogIn';
+// import Register from './components/Register';
+import React, { Component } from 'react';
+import Navbar from './components/Navbar';
+import BookSeats from './components/BookSeats';
+import BookSlot from './components/BookSlot';
+import MyBookings from './components/MyBookings';
+import BookingCancellation from './components/BookingCancellation';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/login" element={<LogIn />} />
+          {/* <Route path="/login" element={<LogIn />} />
           <Route path="/register" element={<Register />} />
-          <Route path = "*" element={<Navigate to = "/login" />} />
+          <Route path = "*" element={<Navigate to = "/login" />} /> */}
+          <Route path="/bookseats" element={<BookSeats/>}></Route>
+          <Route path="/bookslot" element={<BookSlot/>} />
+          <Route path="bookings" element={<MyBookings/>} />
+          <Route path="/cancelbooking" element={<BookingCancellation/>} />
+        
         </Routes>
       </div>
     </Router>
