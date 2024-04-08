@@ -145,6 +145,8 @@ body{
     margin: 0 auto;
     /* Center the component horizontally */
     margin-top:40px;
+
+    
 }
 
 
@@ -205,6 +207,7 @@ body{
     grid-template-columns: repeat(3, 1fr);
     color: rgb(30, 216, 61);
     padding: 10px;
+    
 
 }
 
@@ -292,7 +295,8 @@ footer p {
     height: 100px;
     /* background: linear-gradient(130deg, bisque,pink); */
     /* background: linear-gradient(130deg,pink, bisque); */
-    background: linear-gradient(130deg,rgb(98,98,124),pink);
+    /* background: linear-gradient(130deg,rgb(98,98,124),pink); */
+    background: linear-gradient(90deg, rgba(63, 59, 143, 1) 18%, rgba(40, 37, 9, 1) 64%, rgba(0, 0, 0, 1) 100%, rgba(0, 212, 255, 1) 100%);
     color:white;
     text-decoration-line: underline;
     border: 1px solid black;
@@ -301,7 +305,9 @@ footer p {
 .userprofilediv
 {
     /* background:linear-gradient(130deg,bisque,pink); */
-    background: linear-gradient(130deg, pink, rgb(98, 98, 124));
+    /* background: linear-gradient(130deg, pink, rgb(98, 98, 124)); */
+    /* background-color: rgba(40, 37, 91, 100); */
+    background: linear-gradient(90deg, rgba(63,59,143,1) 18%, rgba(40,37,9,1) 64%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin-top: 50px;
