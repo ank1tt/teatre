@@ -11,6 +11,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/register" element={<Register />} />
           <Route path = "*" element={<Navigate to = "/login" />} />
+         <Route path = "/cancelseats" element={<BookingCancellation/>} />
         </Routes>
       </div>
     </Router>
