@@ -64,10 +64,10 @@ const BookingCancellation = () => {
     console.log("Confirmation:", confirmation);
     console.log("Time Difference:", hoursDifference);
   
-    if (hoursDifference > 48) {
+    if (hoursDifference > 3) {
       setConfirmation(true);
     } else {
-      alert("Cancellation is not allowed within 48 hours of the show time.");
+      alert("Cancellation is not allowed within 3 hours of the show time.");
       setConfirmation(false);
     }
   };
@@ -116,7 +116,7 @@ const BookingCancellation = () => {
         </div>
       ) : (
         <div className="cancellation-confirmed">
-          <p>Booking has been successfully cancelled.</p>
+          <p>Booking of ID {bookingId}  has been successfully cancelled.</p>
           <p>Refund Amount: ${refundAmount}</p>
           {/* Display any additional information here */}
         </div>
