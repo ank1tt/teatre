@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -42,10 +42,60 @@ body {
 .detailsPage{
   background:#2b2b31;
 }
+ */
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #232f3e;
+  color: #f4e1e1;
+}
 
+.header .navbar {
+  background: #131b25;
+  box-shadow: 0px 0px 10px 2px rgb(0 0 0 / 50%);
+  padding: 20px 0;
+}
 
+.header .navbar-brand {
+  color: #ffffff;
+}
 
+.header .navbar-nav a {
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.header .navbar-nav a:hover {
+  color: #ff9900;
+}
+
+.header .navbar-nav {
+  margin-right: 20px;
+}
+
+.txtCenter {
+  text-align: center;
+}
+
+.homePage,
+.detailsPage {
+  padding: 50px 0;
+  margin-top: 10px;
+  background: #232f3e;
+  color: #ffffff;
+}
+
+.detailsPage {
+  background: #232f3e;
+}
+
+/* Rest of your CSS code remains the same */
 
 /* for video card css here  */
 /* VIDEO THUMB */
@@ -55,13 +105,14 @@ body {
   flex-wrap: wrap;
   margin: 15px 0;
 }
-.video-thumb, .video-thumb:hover {
+.video-thumb,
+.video-thumb:hover {
   color: #fff;
 }
 .video-thumb {
   text-decoration: none;
 }
-.video-thumb:hover  .name{
+.video-thumb:hover .name {
   text-decoration: underline;
 }
 .video-thumb .video-image {
@@ -80,26 +131,38 @@ body {
   left: 0;
   top: 0;
   z-index: 0;
-  -webkit-transition: all .35s ease-in-out;
-  -moz-transition: all .35s ease-in-out;
-  -ms-transition: all .35s ease-in-out;
-  -o-transition: all .35s ease-in-out;
-  transition: all .35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
   opacity: 0;
   background: black;
-  background: -moz-linear-gradient(180deg, rgba(0, 0, 0, 0.0018382353) 0%, black 100%);
-  background: -webkit-linear-gradient(180deg, rgba(0, 0, 0, 0.0018382353) 0%, black 100%);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0018382353) 0%, black 100%);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0018382353) 0%,
+    black 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0018382353) 0%,
+    black 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0018382353) 0%,
+    black 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
 }
 .video-thumb .video-image img {
   width: 100%;
   display: block;
-  -webkit-transition: all .35s ease-in-out;
-  -moz-transition: all .35s ease-in-out;
-  -ms-transition: all .35s ease-in-out;
-  -o-transition: all .35s ease-in-out;
-  transition: all .35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
 }
 .video-thumb .video-image .hd {
   height: 20px;
@@ -114,11 +177,11 @@ body {
   bottom: 20px;
   z-index: 1;
   opacity: 0;
-  -webkit-transition: all .35s ease-in-out;
-  -moz-transition: all .35s ease-in-out;
-  -ms-transition: all .35s ease-in-out;
-  -o-transition: all .35s ease-in-out;
-  transition: all .35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
   text-transform: uppercase;
 }
 .video-thumb .video-image .hd b {
@@ -139,11 +202,11 @@ body {
   z-index: 1;
   text-align: center;
   font-weight: 600;
-  -webkit-transition: all .35s ease-in-out;
-  -moz-transition: all .35s ease-in-out;
-  -ms-transition: all .35s ease-in-out;
-  -o-transition: all .35s ease-in-out;
-  transition: all .35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
   opacity: 0;
 }
 .video-thumb .video-image .circle-rate .circle-chart__circle:last-child {
@@ -220,17 +283,15 @@ body {
   opacity: 1;
 }
 
-
-
-.contentHead{
+.contentHead {
   background-color: #28282d;
-    box-shadow: 0 5px 25px 0 rgb(0 0 0 / 30%);
-    margin-bottom: 10px;
-    position: relative;
-    margin-top:50px;
+  box-shadow: 0 5px 25px 0 rgb(0 0 0 / 30%);
+  margin-bottom: 10px;
+  position: relative;
+  margin-top: 50px;
 }
 .contentHead:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -241,6 +302,6 @@ body {
   box-shadow: 0 0 20px 0 rgb(255 88 96 / 50%);
 }
 
-.pd50{
-  padding:50px 0;
+.pd50 {
+  padding: 50px 0;
 }

@@ -17,6 +17,7 @@ const HomeContainer = () => {
       `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&page=${pageno}`
     );
     setContent(data.results);
+    console.log(data);
     setPaginationno(data.total_pages);
   };
 
@@ -40,8 +41,8 @@ const HomeContainer = () => {
         <Row>
           <Col className="col-12">
             <section>
-              <h1 className="txtCenter">Top Trending </h1>
-              <h3 className="txtCenter">Movie For You</h3>
+              <h1 className="txtCenter">Top Trending Movies</h1>
+              {/* <h3 className="txtCenter">Movie For You</h3> */}
             </section>
           </Col>
           {content && content.length > 0
