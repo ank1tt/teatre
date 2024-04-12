@@ -1,19 +1,21 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import {Link} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import Alert from '@mui/material/Alert';
+import MenuItem from '@mui/material/MenuItem';
+import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 
 function Copyright(props) {
   return (
@@ -30,66 +32,73 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function UserLogIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({});
-  const [alert, setAlert] = useState({ message: '', severity: '' });
+export default function Register() {
 
-  const navigate = useNavigate();
+  const expectedAdminCode = '@nk1t'
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+  const[userName, setUserName] = useState('');
+  const[mobileNo, setMobileNo] = useState('');
+  //const[lastName, setLastName] = useState('');
+  const[errors, setErrors] = useState({});
+  const[userType, setUserType] = useState('User');
+  const[adminCodeError, setAdminCodeError] = useState('');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const newErrors = {};
+  const validateForm = () => {
+    let tempErrors = {};
 
-    // Check for empty fields
-    if (!email) newErrors.email = 'Email is required.';
-    if (!password) newErrors.password = 'Password is required.';
+    tempErrors.userName = userName ? "" : "Username  is required";
+   // tempErrors.lastName = lastName ? "" : "Last Name is required";
+    tempErrors.email = email ? "" : "Email is required";
+    tempErrors.password = password ? "" : "Password is required";
+    tempErrors.mobileNo = mobileNo ? "" : "Mobile Number is required";
 
-    // If there are errors, update the state, otherwise, submit the form
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
-      try {
-        const loginResponse = await axios.post('http://localhost:8080/user/login', {
-          email: email,
-          password: password
-        });
+    setErrors(tempErrors);
+    return Object.values(tempErrors).every(x => x === "");
+  }
 
-        console.log(loginResponse);
-        if (loginResponse.data === 'Login Successful') {
-          setAlert({ message: 'Congratulations, You are logged in!', severity: 'success' });
-          setTimeout(() => setAlert({ message: '', severity: '' }), 3000);
+  const handleUserTypeChange = (event) => {
+    const selectedUserType = event.target.value;
 
-          const userTypeResponse = await axios.get('http://localhost:8080/user/usertype', {
-            params: {
-              email: email
-            }
-          });
-
-          console.log(userTypeResponse.data);
-          if (userTypeResponse.data.trim().toLowerCase() === 'admin') {
-            navigate('/admin');
-          }
-        }
-      } catch (error) {
-        console.log(error);
-        if (error.response && error.response.data) {
-          setAlert({ message: error.response.data, severity: 'error' });
-        } else {
-          setAlert({ message: 'An error occurred. Please try again later.', severity: 'error' })
-        }
-        setTimeout(() => setAlert({ message: '', severity: '' }), 3000);
+    if(selectedUserType === 'Admin'){
+      const adminCode = window.prompt('Enter the Admin Code');
+      if(adminCode === expectedAdminCode){
+        setUserType(selectedUserType);
+        setAdminCodeError('');
+      }else{
+        setAdminCodeError('Invaid Admin Code');
       }
+    }else{
+      setUserType(selectedUserType);
+      setAdminCodeError('');
     }
-  };
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(validateForm()){
+    
+    const data = {
+      email: email,
+      password: password,
+      mobileNo: mobileNo,
+      userName: userName,
+      userType: userType
+    };
+
+    axios.post('http://localhost:8080/user/register', data)
+    .then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log('Error', error);
+    })
+    
+  }
+};
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container maxWidth="sm">
-        {alert.message && <Alert variant="filled" severity={alert.severity}>{alert.message}</Alert>}
-      </Container>
-      <Container component="main" maxWidth="xs" style={{ backgroundColor: '#ffd700', height: '47vh' }}  >
+      <Container component="main" maxWidth="xs" style={{backgroundColor: "#ffd700", minheight:"58vh"}}>
         <CssBaseline />
         <Box
           sx={{
@@ -99,60 +108,111 @@ export default function UserLogIn() {
             alignItems: 'center',
           }}
         >
-
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign up
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              error={!!errors.email}
-              helperText={errors.email}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              error={!!errors.password}
-              helperText={errors.password}
-            />
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="username"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  autoFocus
+                  value={userName}
+                  onChange={e => setUserName(e.target.value)}
+                  error={Boolean(errors.userName)}
+                  helperText = {errors.userName} 
+                />
+              </Grid>
+            
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  value = {email}
+                  onChange = {e => setEmail(e.target.value)}
+                  error = {Boolean(errors.email)}
+                  helperText ={errors.email}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                  value = {password}
+                  onChange = {e => setPassword(e.target.value)}
+                  error = {Boolean(errors.password)}
+                  helperText = {errors.password}
+                />
+              </Grid>
+              <Grid item xs={12}>
+               
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="mobileNo"
+                  label="Mobile Number"
+                  type="tel"
+                  id="mobile-no"
+                  autoComplete="new-password"
+                  value = {mobileNo}
+                  onChange = {e => setMobileNo(e.target.value)}
+                  error = {Boolean(errors.mobileNo)}
+                  helperText = {errors.mobileNo}
+                />
+              </Grid>
+              <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="userType"
+                select
+                label="User Type"
+                value={userType}
+                onChange={handleUserTypeChange}
+                helperText={adminCodeError}
+              >
+                <MenuItem value="User">User</MenuItem>
+                <MenuItem value="Admin">Admin</MenuItem>
+              </TextField>
+            </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Log In
+              Register
             </Button>
-            <Grid container justifyContent='center'>
+            <Grid container justifyContent="center">
               <Grid item>
-                <Link to="/register" variant="body2">
-                  {"Don't have an account? Register"}
+                <Link to ="/login" variant="body2">
+                  Already have an account? Log In
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
