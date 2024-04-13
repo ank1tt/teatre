@@ -253,45 +253,45 @@ const MovieDetails = () => {
     );
   };
 
-  // return (
-  //   <>
-  //     <main className="detailsPage">
-  //       <Container>
-  //         <div>
-  //           <input
-  //             type="text"
-  //             placeholder="Movie ID"
-  //             value={movieId}
-  //             onChange={(e) => setMovieId(e.target.value)}
-  //           />
-  //           <input
-  //             type="text"
-  //             placeholder="Movie Name"
-  //             value={movieName}
-  //             onChange={(e) => setMovieName(e.target.value)}
-  //           />
-  //           <button onClick={handlePublish}>Publish</button>
-  //         </div>
-  //         {titleName && titleName !== "" ? renderDataHtml() : "Loading..."}
-  //       </Container>
-  //       <section className="section">
-  //         <div className="contentHead">
-  //           <Container>
-  //             <Row>
-  //               <Col className="col-12">
-  //                 {credits && credits.length > 0 ? (
-  //                   <DarkVariantExample data={credits} />
-  //                 ) : (
-  //                   "Lading data..."
-  //                 )}
-  //               </Col>
-  //             </Row>
-  //           </Container>
-  //         </div>
-  //       </section>
-  //     </main>
-  //   </>
-  // );
+  return (
+    <>
+      <main className="detailsPage">
+        <Container>
+          {/* <div>
+            <input
+              type="text"
+              placeholder="Movie ID"
+              value={movieId}
+              onChange={(e) => setMovieId(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Movie Name"
+              value={movieName}
+              onChange={(e) => setMovieName(e.target.value)}
+            />
+            <button onClick={handlePublish}>Publish</button>
+          </div> */}
+          {titleName && titleName !== "" ? renderDataHtml() : "Loading..."}
+        </Container>
+        <section className="section">
+          <div className="contentHead">
+            <Container>
+              <Row>
+                <Col className="col-12">
+                  {credits && credits.length > 0 ? (
+                    <DarkVariantExample data={credits} />
+                  ) : (
+                    "Lading data..."
+                  )}
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </section>
+      </main>
+    </>
+  );
 };
 
 export default MovieDetails;
