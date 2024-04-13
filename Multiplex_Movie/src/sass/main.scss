@@ -1,0 +1,25 @@
+@use "./utils";
+
+#myBg {
+  // background-color: red;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../assets/images/bg/main.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#trending {
+  background-image: url("../assets/images/bg/scifi.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#superhero {
+  background-image: url("../assets/images/bg/spiderman.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
