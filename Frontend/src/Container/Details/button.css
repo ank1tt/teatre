@@ -1,0 +1,23 @@
+.yourButtonClass {
+  background-color: rgb(178, 40, 40); /* Red */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold; /* Make the text bold */
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 9px #999; /* Shadow effect */
+}
+
+.yourButtonClass:hover {
+  background-color: #ff4d4d; /* Lighter red when hovered */
+  color: white;
+  box-shadow: 0 5px #666; /* Smaller shadow when hovered */
+  transform: translateY(4px); /* Button moves down when hovered */
+}

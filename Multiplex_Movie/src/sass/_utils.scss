@@ -1,0 +1,33 @@
+.drop-shadow-sm-black {
+  filter: drop-shadow(1px 1px 2px black);
+}
+
+.drop-shadow-sm-white {
+  filter: drop-shadow(1px 1px 20px white);
+}
+
+.py-10 {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.card img {
+  height: 28rem;
+}
+.card-movie {
+  transition: 0.5s;
+}
+
+.card-movie:hover {
+  filter: drop-shadow(1px 1px 16px white);
+}
+
+.text-gold {
+  color: gold;
+}
+
+.text-hero-clip {
+  background: linear-gradient(to right, rgb(0, 153, 255), red);
+  background-clip: text !important;
+  color: transparent !important;
+}
