@@ -3,11 +3,13 @@ package com.teatre.controller;
 import com.teatre.entity.Movies;
 import com.teatre.entity.Shows;
 import com.teatre.service.AdminService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -40,4 +42,11 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllMovies());
     }
 
+    @PostMapping("/generate-revenue")
+    public ResponseEntity<Double> calculateRevenue(
+            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        double revenue = adminService.calculateRevenue(startDate, endDate);
+        return ResponseEntity.ok(revenue);
+    }
 }
