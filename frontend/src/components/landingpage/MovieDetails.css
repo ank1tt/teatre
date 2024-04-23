@@ -1,0 +1,57 @@
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 20px;
+    background-color: #090621;
+    /* black background */
+    color: rgb(235, 235, 240);
+    /* blue text */
+}
+
+.movie-details .poster-details {
+    display: flex;
+    flex-direction: row;
+}
+
+.movie-details .poster {
+    flex: 1;
+}
+
+.movie-details .poster img {
+    width: 300px;
+    height: auto;
+}
+
+.movie-details .details {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.movie-details .details h1 {
+    font-size: 2em;
+}
+
+.movie-details .details p {
+    font-size: 1em;
+}
+
+.movie-details .cast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+    /* adjust this value as needed */
+}
+
+.movie-details .cast div {
+    margin: 10px;
+    text-align: center;
+}
+
+.movie-details .cast img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
