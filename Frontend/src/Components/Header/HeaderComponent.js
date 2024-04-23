@@ -13,7 +13,7 @@ import DetailsContainer from "../../Container/Details/DetailsContainer";
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-  const [showPublished, setShowPublished] = useState(false);
+  // const [showPublished, setShowPublished] = useState(false);
   // const [publishedMovie, setPublishedMovie] = useState(null);
   // const [published, setPublished] = useState(false);
   // const [publishedMovieId, setPublishedMovieId] = useState(null);
@@ -51,6 +51,7 @@ const HeaderComponent = () => {
     { name: "Search", link: "/search" },
     { name: "Contact Us", link: "/contact" },
     { name: "About Us", link: "/about" },
+    { name: "Published shows", Link: "/published" },
   ];
 
   return (
@@ -83,8 +84,8 @@ const HeaderComponent = () => {
                 onClick={handlePublishedClick}
               >
                 Published
-              </Button> */}
-              {/* <PublishMovie /> */}
+              </Button>
+              <PublishMovie /> */}
               <Button
                 variant="outline-primary"
                 className="mr-2 customButton"

@@ -14,10 +14,10 @@ const MovieDetails = () => {
   const [content, setContent] = useState();
   const [video, setVideo] = useState();
   const [credits, setCredits] = useState();
-  const [isPublished, setIsPublished] = useState(false);
-  const [movieId, setMovieId] = useState("");
-  const [movieName, setMovieName] = useState("");
-  const [publishedMovieId, setPublishedMovieId] = useState(null);
+  // const [isPublished, setIsPublished] = useState(false);
+  // const [movieId, setMovieId] = useState("");
+  // const [movieName, setMovieName] = useState("");
+  // const [publishedMovieId, setPublishedMovieId] = useState(null);
 
   const titleName =
     content && content.name && content.name !== ""
@@ -70,15 +70,15 @@ const MovieDetails = () => {
     }
   };
 
-  const handlePublish = () => {
-    if (movieId === publishedMovieId) {
-      alert(`Movie ${movieName} is already published.`);
-    } else {
-      setPublishedMovieId(movieId);
-      setIsPublished(true);
-      alert(`Movie ${movieName} has been published.`);
-    }
-  };
+  // const handlePublish = () => {
+  //   if (movieId === publishedMovieId) {
+  //     alert(`Movie ${movieName} is already published.`);
+  //   } else {
+  //     setPublishedMovieId(movieId);
+  //     setIsPublished(true);
+  //     alert(`Movie ${movieName} has been published.`);
+  //   }
+  // };
 
   // useEffect(() => {
   //   fetchData();
@@ -100,22 +100,22 @@ const MovieDetails = () => {
     //     }
     //   })
     //   .catch((error) => console.error("Error:", error));
-    axios
-      .get(`http://localhost:8080/publish/publishedMovieIds`)
-      .then((response) => {
-        const publishedMovieIds = response.data;
-        console.log("publishedMovieIds", publishedMovieIds);
-        if (publishedMovieIds.includes(id) === id) {
-          // alert(`Movie ${titleName} is already published.`);
-          // alert("Move to the booking page");
-          setIsPublished(true);
-        } else {
-          // alert(`Movie ${titleName} is not yet published.`);
-          setIsPublished(false);
-        }
-      })
-      .catch((error) => console.error("Error:", error));
-  }, [movieId]);
+    // axios
+    //   .get(`http://localhost:8080/publish/publishedMovieIds`)
+    //   .then((response) => {
+    //     const publishedMovieIds = response.data;
+    //     console.log("publishedMovieIds", publishedMovieIds);
+    //     if (publishedMovieIds.includes(id)) {
+    //       // alert(`Movie ${titleName} is already published.`);
+    //       // alert("Move to the booking page");
+    //       setIsPublished(true);
+    //     } else {
+    //       // alert(`Movie ${titleName} is not yet published.`);
+    //       setIsPublished(false);
+    //     }
+    //   })
+    //   .catch((error) => console.error("Error:", error));
+  }, []);
 
   const renderDataHtml = () => {
     const ImageURL = content.poster_path
@@ -141,12 +141,27 @@ const MovieDetails = () => {
         ? content.genres.map((item) => <span key={item.id}>{item.name}</span>)
         : "";
 
+    // const handlePublish = () => {
+    //   if (isPublished) {
+    //     alert("Move to the booking page");
+    //   } else {
+    //     alert(`Movie ${titleName} is not yet published.`);
+    //   }
+    // };
+
     const handlePublish = () => {
-      if (isPublished || id === publishedMovieId) {
-        alert("Move to the booking page");
-      } else {
-        alert(`Movie ${titleName} is not yet published.`);
-      }
+      axios
+        .get(`http://localhost:8080/publish/publishedMovieIds`)
+        .then((response) => {
+          const publishedMovieIds = response.data;
+          console.log("publishedMovieIds", publishedMovieIds);
+          if (publishedMovieIds.includes(Number(id))) {
+            alert("Move to the booking page");
+          } else {
+            alert(`Movie ${titleName} is not yet published.`);
+          }
+        })
+        .catch((error) => console.error("Error:", error));
     };
 
     // const handlePublish = () => {

@@ -20,7 +20,9 @@ const DetailsPage = () => {
   return (
     <div>
       <h2>{movie.title}</h2>
-      <img src={movie.srcImg} alt={movie.title} />
+      <Link to={`/details/${movie.id}`}>
+        <img src={movie.srcImg} alt={movie.title} />
+      </Link>
       <p>{movie.description}</p>
       <p>{movie.info}</p>
     </div>

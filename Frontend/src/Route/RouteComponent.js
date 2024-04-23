@@ -11,6 +11,7 @@ import TvSeriesContainer from "../Container/TvSeries/TvSeriesContainer";
 import SearchContainer from "../Container/Search/SearchContainer";
 import AboutContainer from "../Container/About/AboutContainer";
 import LogIn from "../Container/login/LogIn";
+import Published from "../Container/PublishMovie/PublishMovie";
 // import MyBooking from "../Container/MyBooking";
 // import BookSlot from "../Container/BookSlot";
 
@@ -32,6 +33,7 @@ const RouteComponent = () => {
             path="/details/:movieid/:mediatype"
             element={<DetailsContainer />}
           />
+          <Route path="/publishedshows" element={<Published />} />
         </Routes>
         <FooterComponent />
       </BrowserRouter>
