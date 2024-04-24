@@ -8,6 +8,10 @@ import {
     VideoCameraOutlined,
     RiseOutlined,
 } from '@ant-design/icons';
+import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
+import EventSeatOutlinedIcon from '@mui/icons-material/EventSeatOutlined';
+import ReduceCapacitySharpIcon from '@mui/icons-material/ReduceCapacitySharp';
+import AddHomeSharpIcon from '@mui/icons-material/AddHomeSharp';
 import { Layout, Menu, Typography, theme } from 'antd';
 // import PublishMovie from './PublishMovie';
 import axios from 'axios';
@@ -57,12 +61,25 @@ const AdminHome = () => {
                         Home
                     </Menu.Item>
                     <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                        <Link to="/publish-show">Publish Movies</Link>
+                        <Link to="/publish-movie">Publish Movies</Link>
                     </Menu.Item>
                     <Menu.Item key="3" icon={<RiseOutlined />}>
                         <Link to = "/generate-revenue">Generate Earnings</Link>
                     </Menu.Item>
-                </Menu>
+                    <Menu.Item key="4" icon={<AddHomeSharpIcon />}>
+                        <Link to = "/publish-hall">Add Hall</Link>
+                    </Menu.Item>
+                    <Menu.Item key="5" icon={<EventSeatOutlinedIcon />}>
+                        <Link to = "/publish-seat">Add Seats</Link>
+                    </Menu.Item>
+                    <Menu.Item key="6" icon={<ReduceCapacitySharpIcon />}>
+                        <Link to = "/publish-hall-capacity">Add Hall Capacity</Link>
+                    </Menu.Item>
+                    <Menu.Item key="7" icon={<DeleteForeverSharpIcon />}>
+                        <Link to = "/delete-shows">Configure Shows</Link>
+                    </Menu.Item>
+                    
+                    </Menu>
             </Sider>
             <Layout>
                 

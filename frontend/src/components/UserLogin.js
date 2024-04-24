@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+ 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -27,25 +27,25 @@ function Copyright(props) {
     </Typography>
   );
 }
-
+ 
 const defaultTheme = createTheme();
-
+ 
 export default function UserLogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [alert, setAlert] = useState({ message: '', severity: '' });
-
+ 
   const navigate = useNavigate();
-
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newErrors = {};
-
+ 
     // Check for empty fields
     if (!email) newErrors.email = 'Email is required.';
     if (!password) newErrors.password = 'Password is required.';
-
+ 
     // If there are errors, update the state, otherwise, submit the form
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -55,21 +55,29 @@ export default function UserLogIn() {
           email: email,
           password: password
         });
-
+ 
         console.log(loginResponse);
         if (loginResponse.data === 'Login Successful') {
           setAlert({ message: 'Congratulations, You are logged in!', severity: 'success' });
           setTimeout(() => setAlert({ message: '', severity: '' }), 3000);
-
+ 
           const userTypeResponse = await axios.get('http://localhost:8080/user/usertype', {
             params: {
               email: email
             }
           });
-
           console.log(userTypeResponse.data);
-          if (userTypeResponse.data.trim().toLowerCase() === 'admin') {
+          const userType = userTypeResponse.data.userType.trim().toLowerCase();
+          const userId = userTypeResponse.data.userId;
+ 
+          localStorage.setItem('userId', userId);  
+          localStorage.setItem('userType', userType);  
+ 
+          if (userType === 'admin') {
+            console.log('Inside if condition');
             navigate('/admin');
+          } else {
+            navigate(`/home/${userId}`);
           }
         }
       } catch (error) {
@@ -83,7 +91,7 @@ export default function UserLogIn() {
       }
     }
   };
-
+ 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container maxWidth="sm">
@@ -99,7 +107,7 @@ export default function UserLogIn() {
             alignItems: 'center',
           }}
         >
-
+ 
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>

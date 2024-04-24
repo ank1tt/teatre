@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import axios from 'axios';
+import NavigationBar from './landingpage/NavigationBar';
 
 
 function Copyright(props) {
@@ -98,6 +99,7 @@ export default function Register() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <NavigationBar/>
       <Container component="main" maxWidth="xs" style={{backgroundColor: "#ffd700", minheight:"58vh"}}>
         <CssBaseline />
         <Box

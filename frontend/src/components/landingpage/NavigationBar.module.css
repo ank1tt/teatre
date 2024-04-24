@@ -1,0 +1,146 @@
+/* .nav {
+    display: flex;
+    justify-content: center;
+
+    background-color: rgb(13, 7, 48);
+    height: 60px;
+    padding: 0 20px;
+    margin-top: 0px;
+}
+
+.nav__logo {
+    width: 100px;
+    object-fit: contain;
+    margin-top: 18px;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+
+    cursor: pointer;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+
+    width: 120px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav a:hover {
+    color: pink;
+}
+
+.nav_links {
+
+    justify-content: space-between;
+    width: 150px;
+    display: inline-block;
+    align-items: center;
+    margin-top: 17px;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #131921;
+    color: white;
+    height: 60px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.nav__left {
+    display: flex;
+    align-items: center;
+}
+
+/* .nav__logo {
+  width: 100px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 20px;
+} */
+
+.nav__logo {
+    font-family: "Dancing Script", cursive;
+    text-decoration: none;
+    font-size: 2em;
+    color: rgb(235, 61, 26);
+}
+
+.nav__search {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 800px;
+}
+
+.nav__search input {
+    flex-grow: 1;
+    height: 35px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 14px;
+}
+
+.nav__search button {
+    height: 35px;
+    padding: 0 10px;
+    background-color: #febd69;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.nav__right {
+    display: flex;
+    align-items: center;
+}
+
+.nav__links ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__links li {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.nav__links a {
+    color: white;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+.nav__links a:hover {
+    color: #febd69;
+}
+
+.nav__cart {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.nav__cart span {
+    margin-left: 5px;
+    font-size: 14px;
+}

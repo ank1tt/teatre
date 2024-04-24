@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
-import '../styles/PublishMovie.css';
+import './PublishMovie.css';
 import axios from 'axios';
-
-
-
-
+ 
+ 
+ 
+ 
 const PublishMovie = () => {
   const [showDetails, setShowDetails] = useState({
     movieTitle: '',
     img: '',
   });
-
+ 
   const handleFieldChange = (e) => {
     const { name, value } = e.target;
     setShowDetails({ ...showDetails, [name]: value });
   };
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     //Validation
-
+ 
     if(!showDetails.movieTitle.trim() || !showDetails.img.trim()){
       alert('Please fill all the fields.')
       return;
     }
-
+ 
     axios.post('http://localhost:8080/admin/publish-movie', showDetails)
     .then(response => {
       if(response.status === 200){
@@ -38,7 +38,7 @@ const PublishMovie = () => {
     });
     console.log(showDetails);
   };
-
+ 
   return (
     <div className="publish-movie-container">
     <form onSubmit={handleSubmit}>
@@ -66,5 +66,5 @@ const PublishMovie = () => {
     </div>
   );
 };
-
+ 
 export default PublishMovie;
