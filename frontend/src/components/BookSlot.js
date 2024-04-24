@@ -148,8 +148,7 @@ const BookSlot = (props) =>
             return hallData;
         })
         setUniqueHalls(uniqueHallData);
-        const uniqueHallUniqueShowData =showsFilteredOnDateandTime.filter(hall=>hall.hall.hallId=showId);
-        console.log("final halls based on shows",uniqueHallUniqueShowData)
+
     }
 
     // const filteredHalls = uniqueHalls.filter(hall => {
@@ -158,19 +157,6 @@ const BookSlot = (props) =>
     //     return hallShows.some(show => show.showDate === formattedSelectedDate);
     // });
 
-    const filterHallsByShows = (halls, shows) => {
-  const uniqueHallIds = new Set(halls.map(hall => hall.hall.hallId));
-  const filteredHalls = Array.from(uniqueHallIds).map(hallId => {
-    const hallData = halls.find(hall => hall.hall.hallId === hallId);
-    const hallShows = shows.filter(show => show.hallId === hallId);
-    return {
-      ...hallData,
-      shows: hallShows
-    };
-  }).filter(hall => hall.shows.length > 0);
-
-  return filteredHalls;
-};
 
     return(
         <div className={styles.bookslotcontainer}> 
